@@ -5,9 +5,9 @@ using Nodsoft.Wargaming.Api.Common.Data.Response.Wows.Public;
 
 namespace Nodsoft.Wargaming.Api.Client.Clients.Wows;
 
-public class WowsPublicApiHandler : PublicApiClientBase
+public class WowsPublicApiClient : PublicApiClientBase
 {
-	public WowsPublicApiHandler(HttpClient client, PublicApiOptions options) : base(client, options) { }
+	public WowsPublicApiClient(HttpClient client, PublicApiOptions options) : base(client, options) { }
 	
 	
 	// Api : account/list/
@@ -19,7 +19,7 @@ public class WowsPublicApiHandler : PublicApiClientBase
 		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("account/list/", query));
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 
-		return await response.Content.ReadFromJsonAsync<IEnumerable<AccountListing>>(SerializerOptions, ct);
+		return (await response.Content.ReadFromJsonAsync<ApiResponse<IEnumerable<AccountListing>>>(SerializerOptions, ct))?.Data;
 	}
 	
 	// Api : account/info/
