@@ -1,4 +1,4 @@
-﻿namespace Nodsoft.Wargaming.Api.Client.Infrastructure;
+﻿namespace Nodsoft.Wargaming.Api.Client.Infrastructure.Throttling;
 
 /// <summary>
 /// Allows a limited number of acquisitions during a timespan

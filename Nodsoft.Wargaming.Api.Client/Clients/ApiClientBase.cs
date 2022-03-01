@@ -1,13 +1,24 @@
-﻿namespace Nodsoft.Wargaming.Api.Client.Clients;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using Nodsoft.Wargaming.Api.Client.Infrastructure;
+
+namespace Nodsoft.Wargaming.Api.Client.Clients;
 
 public abstract class ApiClientBase : IApiClient
 {
-	protected HttpClient Client { get; set; }
+	protected HttpClient Client { get; init; }
 
+	protected static JsonSerializerOptions SerializerOptions { get; } = new()
+	{
+		PropertyNamingPolicy = SnakeCaseNamingPolicy.Instance,
+		PropertyNameCaseInsensitive = true,
+		NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals | JsonNumberHandling.AllowReadingFromString,
+			
+	};
+	
 	public ApiClientBase(HttpClient client)
 	{
 		Client = client;
 	}
-	
-	
+
 }

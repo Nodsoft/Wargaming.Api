@@ -1,8 +1,8 @@
-﻿namespace Nodsoft.Wargaming.Api.Client.Infrastructure;
+﻿namespace Nodsoft.Wargaming.Api.Client.Infrastructure.Throttling;
 
 public class ThrottledHandler : DelegatingHandler
 {
-	protected TimeSpanSemaphore RequestSemaphore { get; init; }
+	protected TimeSpanSemaphore RequestSemaphore { get; }
 
 	public ThrottledHandler(ushort maxConcurrentRequests)
 	{
