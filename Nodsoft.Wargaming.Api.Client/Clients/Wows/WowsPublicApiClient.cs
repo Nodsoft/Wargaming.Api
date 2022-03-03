@@ -11,7 +11,7 @@ public class WowsPublicApiClient : PublicApiClientBase
 	
 	
 	// Api : account/list/
-	public async Task<IEnumerable<AccountListing>?> ListPlayersAsync(string search, CancellationToken ct = default)
+	public async Task<ApiResponse<IEnumerable<AccountListing>>?> ListPlayersAsync(string search, CancellationToken ct = default)
 	{
 		Dictionary<string, string> query = GetDefaultQueryParameters();
 		query.Add("search", search);
@@ -19,11 +19,11 @@ public class WowsPublicApiClient : PublicApiClientBase
 		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("account/list/", query));
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 
-		return (await response.Content.ReadFromJsonAsync<ApiResponse<IEnumerable<AccountListing>>>(SerializerOptions, ct))?.Data;
+		return await response.Content.ReadFromJsonAsync<ApiResponse<IEnumerable<AccountListing>>>(SerializerOptions, ct);
 	}
 	
 	// Api : account/info/
-	public async Task<Dictionary<uint, AccountInfo>?> FetchPlayersAsync(IEnumerable<uint> accountIds, CancellationToken ct = default)
+	public async Task<ApiResponse<Dictionary<uint, AccountInfo>>?> FetchPlayersAsync(IEnumerable<uint> accountIds, CancellationToken ct = default)
 	{
 		Dictionary<string, string> query = GetDefaultQueryParameters();
 		query.Add("account_id", string.Join(',', accountIds));
@@ -31,6 +31,6 @@ public class WowsPublicApiClient : PublicApiClientBase
 		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("account/info/", query));
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 
-		return (await response.Content.ReadFromJsonAsync<ApiResponse<Dictionary<uint, AccountInfo>>>(SerializerOptions, ct))?.Data;
+		return await response.Content.ReadFromJsonAsync<ApiResponse<Dictionary<uint, AccountInfo>>>(SerializerOptions, ct);
 	}
 }

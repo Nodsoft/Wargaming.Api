@@ -26,7 +26,7 @@ public static class Program
 			client.BaseAddress = new(ApiHostUtilities.GetApiHost(Game.WOWS, Region.EU));
 		}, 20);
 
-		services.AddSingleton(new PublicApiOptions { AppId = "32b39a194dda7040645c31ad977cd573" });
+		services.AddSingleton(new PublicApiOptions { AppId = "17664662df5b8c87b890dc0e33db92d4" });
 
 		return services;
 	}

@@ -13,6 +13,8 @@ public record ApiResponse
 	public ResponseMeta Meta { get; init; }
 
 	public object Data { get; init; }
+	
+	
 }
 
 /// <summary>
@@ -29,4 +31,6 @@ public record ApiResponse<TData>
 	public ResponseMeta Meta { get; init; }
 
 	public TData Data { get; init; }
+
+	public static implicit operator TData(ApiResponse<TData> response) => response.Data;
 }

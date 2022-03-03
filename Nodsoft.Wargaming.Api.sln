@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nodsoft.Wargaming.Api.Clien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nodsoft.Wargaming.Api.Spike", "Nodsoft.Wargaming.Api.Spike\Nodsoft.Wargaming.Api.Spike.csproj", "{3815E54D-70D2-479A-A6DB-5E8C0E9D6F24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nodsoft.Wargaming.Api.Tests", "Nodsoft.Wargaming.Api.Tests\Nodsoft.Wargaming.Api.Tests.csproj", "{6F187CA5-BF98-4F56-89B9-4AB268F75C00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{3815E54D-70D2-479A-A6DB-5E8C0E9D6F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3815E54D-70D2-479A-A6DB-5E8C0E9D6F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3815E54D-70D2-479A-A6DB-5E8C0E9D6F24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F187CA5-BF98-4F56-89B9-4AB268F75C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F187CA5-BF98-4F56-89B9-4AB268F75C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F187CA5-BF98-4F56-89B9-4AB268F75C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F187CA5-BF98-4F56-89B9-4AB268F75C00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
