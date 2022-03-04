@@ -32,5 +32,5 @@ public record ApiResponse<TData>
 
 	public TData Data { get; init; }
 
-	public static implicit operator TData(ApiResponse<TData> response) => response.Data;
+	public static implicit operator TData(ApiResponse<TData>? response) => response.Data;
 }
