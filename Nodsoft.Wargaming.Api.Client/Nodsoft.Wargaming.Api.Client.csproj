@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+
+        <Version>0.1</Version>
+        <Authors>Sakura Akeno Isayeki</Authors>
+        <Company>Nodsoft Systems</Company>
+        <Description>.NET Wargaming API Client library</Description>
+        <RepositoryUrl>https://github.com/Nodsoft/Wargaming.Api</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <Copyright>MIT License</Copyright>
+
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Nodsoft.Wargaming.Api.Common\Nodsoft.Wargaming.Api.Common.csproj" />
+    </ItemGroup>
+
+</Project>

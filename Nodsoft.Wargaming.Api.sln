@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nodsoft.Wargaming.Api.Common", "Nodsoft.Wargaming.Api.Common\Nodsoft.Wargaming.Api.Common.csproj", "{CFFF1EE9-5899-45E1-B92B-CD091F8D4122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nodsoft.Wargaming.Api.Client", "Nodsoft.Wargaming.Api.Client\Nodsoft.Wargaming.Api.Client.csproj", "{D0399831-72C8-47EB-A3A6-AEFA23AE923F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nodsoft.Wargaming.Api.Spike", "Nodsoft.Wargaming.Api.Spike\Nodsoft.Wargaming.Api.Spike.csproj", "{3815E54D-70D2-479A-A6DB-5E8C0E9D6F24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nodsoft.Wargaming.Api.Tests", "Nodsoft.Wargaming.Api.Tests\Nodsoft.Wargaming.Api.Tests.csproj", "{6F187CA5-BF98-4F56-89B9-4AB268F75C00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFFF1EE9-5899-45E1-B92B-CD091F8D4122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFF1EE9-5899-45E1-B92B-CD091F8D4122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFF1EE9-5899-45E1-B92B-CD091F8D4122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFF1EE9-5899-45E1-B92B-CD091F8D4122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0399831-72C8-47EB-A3A6-AEFA23AE923F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0399831-72C8-47EB-A3A6-AEFA23AE923F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0399831-72C8-47EB-A3A6-AEFA23AE923F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0399831-72C8-47EB-A3A6-AEFA23AE923F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3815E54D-70D2-479A-A6DB-5E8C0E9D6F24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3815E54D-70D2-479A-A6DB-5E8C0E9D6F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3815E54D-70D2-479A-A6DB-5E8C0E9D6F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3815E54D-70D2-479A-A6DB-5E8C0E9D6F24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F187CA5-BF98-4F56-89B9-4AB268F75C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F187CA5-BF98-4F56-89B9-4AB268F75C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F187CA5-BF98-4F56-89B9-4AB268F75C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F187CA5-BF98-4F56-89B9-4AB268F75C00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
