@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Json;
 using Microsoft.AspNetCore.WebUtilities;
-using Nodsoft.Wargaming.Api.Common.Data.Response;
-using Nodsoft.Wargaming.Api.Common.Data.Response.Wows.Public;
+using Nodsoft.Wargaming.Api.Common.Data.Responses;
+using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Public;
 
 namespace Nodsoft.Wargaming.Api.Client.Clients.Wows;
 

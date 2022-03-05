@@ -1,4 +1,4 @@
-﻿namespace Nodsoft.Wargaming.Api.Common.Data.Response;
+﻿namespace Nodsoft.Wargaming.Api.Common.Data.Responses;
 
 public record ResponseMeta
 {

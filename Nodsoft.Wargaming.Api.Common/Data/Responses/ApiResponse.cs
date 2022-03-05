@@ -1,4 +1,4 @@
-﻿namespace Nodsoft.Wargaming.Api.Common.Data.Response;
+﻿namespace Nodsoft.Wargaming.Api.Common.Data.Responses;
 
 /// <summary>
 /// Loosely-typed / Generic API Response template.
@@ -6,16 +6,7 @@
 /// <remarks>
 /// Use <see cref="ApiResponse{TData}"/> for strong-typing.
 /// </remarks>
-public record ApiResponse
-{
-	public string Status { get; init; }
-
-	public ResponseMeta Meta { get; init; }
-
-	public object Data { get; init; }
-	
-	
-}
+public record ApiResponse : ApiResponse<object>;
 
 /// <summary>
 /// Strongly-typed / Defined API Response template.
@@ -26,11 +17,11 @@ public record ApiResponse
 /// <typeparam name="TData">Model type of the Response's Data</typeparam>
 public record ApiResponse<TData>
 {
-	public string Status { get; init; }
+	public string Status { get; init; } = string.Empty;
 
-	public ResponseMeta Meta { get; init; }
+	public ResponseMeta? Meta { get; init; }
 
-	public TData Data { get; init; }
+	public TData? Data { get; init; }
 
 	public static implicit operator TData(ApiResponse<TData>? response) => response.Data;
 }
