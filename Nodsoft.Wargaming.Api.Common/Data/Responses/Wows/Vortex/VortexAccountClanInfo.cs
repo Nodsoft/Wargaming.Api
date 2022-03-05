@@ -1,8 +1,10 @@
-﻿namespace Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Vortex;
+﻿using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Public;
+
+namespace Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Vortex;
 
 public class VortexAccountClanInfo
 {
-	public VortexClanInfo? Clan { get; set; }
+	public ClanListing? Clan { get; init; }
 	
 	public DateTime? JoinedAt { get; init; }
 	

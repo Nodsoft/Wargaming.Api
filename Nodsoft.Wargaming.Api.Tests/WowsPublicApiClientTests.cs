@@ -39,8 +39,8 @@ public class WowsPublicApiClientTests
 		AccountListing[]? results = (await _client.ListPlayersAsync("Sakura_Isayeki"))?.Data?.ToArray();
 
 		Assert.IsNotNull(results);
-		Assert.IsNotEmpty(results);
-		Assert.IsTrue(results.Any(x => x.AccountId == 503379282));
+		Assert.IsNotEmpty(results!);
+		Assert.IsTrue(results!.Any(x => x.AccountId == 503379282));
 	}
 	
 	[Test]
@@ -50,7 +50,28 @@ public class WowsPublicApiClientTests
 		Dictionary<uint, AccountInfo>? results = (await _client.FetchPlayersAsync(new uint[] { accountId }))?.Data;
 
 		Assert.IsNotNull(results);
-		Assert.IsNotEmpty(results);
-		Assert.IsTrue(results.ContainsKey(accountId));
+		Assert.IsNotEmpty(results!);
+		Assert.IsTrue(results!.ContainsKey(accountId));
+	}
+	
+	[Test]
+	public async Task ListClansAsync_Nominal()
+	{
+		ClanListing[]? results = (await _client.ListClansAsync("Stormshock"))?.Data?.ToArray();
+
+		Assert.IsNotNull(results);
+		Assert.IsNotEmpty(results!);
+		Assert.IsTrue(results!.Any(x => x.ClanId == 500186529));
+	}
+	
+	[Test]
+	public async Task FetchClansAsync_Nominal()
+	{
+		const int clanId = 500186529;
+		Dictionary<uint, ClanInfo>? results = (await _client.FetchClansAsync(new uint[] { clanId }))?.Data;
+
+		Assert.IsNotNull(results);
+		Assert.IsNotEmpty(results!);
+		Assert.IsTrue(results!.ContainsKey(clanId));
 	}
 }

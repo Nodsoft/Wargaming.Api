@@ -1,9 +1,9 @@
-﻿using System.Drawing;
+﻿namespace Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Public;
 
-namespace Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Vortex;
-
-public record VortexClanInfo
+public record ClanListing
 {
+	public uint ClanId { get; init; }
+	
 	public string Tag { get; init; } = string.Empty;
 
 	public string Name { get; init; } = string.Empty;
