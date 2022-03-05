@@ -1,8 +1,9 @@
 ﻿using System.Collections.Concurrent;
 using System.Net.Http.Json;
 using Nodsoft.Wargaming.Api.Common;
-using Nodsoft.Wargaming.Api.Common.Data.Response;
-using Nodsoft.Wargaming.Api.Common.Data.Response.Wows.Public;
+using Nodsoft.Wargaming.Api.Common.Data.Responses;
+using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Public;
+using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Vortex;
 
 namespace Nodsoft.Wargaming.Api.Client.Clients.Wows;
 
@@ -22,7 +23,7 @@ public class WowsVortexApiClient : ApiClientBase
 	
 	
 	// Api : accounts/{id}
-	public async Task<AccountInfo?> FetchAccountAsync(uint accountId, CancellationToken ct = default) 
+	public async Task<VortexAccountInfo?> FetchAccountAsync(uint accountId, CancellationToken ct = default) 
 	{
 		using HttpRequestMessage request = new(HttpMethod.Get, $"accounts/{accountId}/");
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
@@ -31,8 +32,8 @@ public class WowsVortexApiClient : ApiClientBase
 		
 		if (response.IsSuccessStatusCode)
 		{
-			Dictionary<uint, AccountInfo> parsedRequest = await response.Content.ReadFromJsonAsync<ApiResponse<Dictionary<uint, AccountInfo>>>(SerializerOptions, ct);
-			(uint key, AccountInfo? value) = parsedRequest.First();
+			Dictionary<uint, VortexAccountInfo> parsedRequest = await response.Content.ReadFromJsonAsync<ApiResponse<Dictionary<uint, VortexAccountInfo>>>(SerializerOptions, ct);
+			(uint key, VortexAccountInfo? value) = parsedRequest.First();
 
 			return value with { AccountId = key };
 		}
@@ -40,9 +41,9 @@ public class WowsVortexApiClient : ApiClientBase
 		return null;
 	}
 	
-	public async Task<Dictionary<uint, AccountInfo?>> FetchAccountsAsync(IEnumerable<uint> accountIds, CancellationToken ct = default)
+	public async Task<Dictionary<uint, VortexAccountInfo?>> FetchAccountsAsync(IEnumerable<uint> accountIds, CancellationToken ct = default)
 	{
-		Dictionary<uint, AccountInfo?> accountFetches = new();
+		Dictionary<uint, VortexAccountInfo?> accountFetches = new();
 
 		foreach (uint id in accountIds.AsParallel().WithCancellation(ct).WithMergeOptions(ParallelMergeOptions.NotBuffered))
 		{

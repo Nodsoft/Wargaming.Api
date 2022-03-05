@@ -7,7 +7,7 @@ using Nodsoft.Wargaming.Api.Client;
 using Nodsoft.Wargaming.Api.Client.Clients;
 using Nodsoft.Wargaming.Api.Client.Clients.Wows;
 using Nodsoft.Wargaming.Api.Common;
-using Nodsoft.Wargaming.Api.Common.Data.Response.Wows.Public;
+using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Public;
 using NUnit.Framework;
 
 namespace Nodsoft.Wargaming.Api.Tests;

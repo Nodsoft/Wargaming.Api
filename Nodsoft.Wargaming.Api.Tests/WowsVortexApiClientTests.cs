@@ -7,7 +7,8 @@ using Nodsoft.Wargaming.Api.Client;
 using Nodsoft.Wargaming.Api.Client.Clients;
 using Nodsoft.Wargaming.Api.Client.Clients.Wows;
 using Nodsoft.Wargaming.Api.Common;
-using Nodsoft.Wargaming.Api.Common.Data.Response.Wows.Public;
+using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Public;
+using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Vortex;
 using NUnit.Framework;
 
 namespace Nodsoft.Wargaming.Api.Tests;
@@ -33,7 +34,7 @@ public class WowsVortexApiClientTests
 		WowsVortexApiClient client = _services.GetRequiredService<WowsVortexApiClient>();
 
 		const int accountId = 503379282;
-		AccountInfo? results = await client.FetchAccountAsync(accountId);
+		VortexAccountInfo? results = await client.FetchAccountAsync(accountId);
 
 		Assert.IsNotNull(results);
 		Assert.IsTrue(results!.AccountId == accountId);
@@ -46,7 +47,7 @@ public class WowsVortexApiClientTests
 
 		uint[] ids = { 503379282, 534767817 };
 		
-		Dictionary<uint, AccountInfo?> results = await client.FetchAccountsAsync(ids);
+		Dictionary<uint, VortexAccountInfo?> results = await client.FetchAccountsAsync(ids);
 
 		Assert.IsNotEmpty(results);
 		Assert.IsTrue(results.All(x => ids.Contains(x.Value?.AccountId ?? 0)));
