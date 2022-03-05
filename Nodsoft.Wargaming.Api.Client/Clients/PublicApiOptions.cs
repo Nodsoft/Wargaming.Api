@@ -2,5 +2,5 @@
 
 public record PublicApiOptions
 {
-	public string AppId { internal get; init; }
+	public string AppId { internal get; init; } = string.Empty;
 }

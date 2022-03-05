@@ -8,7 +8,7 @@ public class VortexAccountClanInfo
 	
 	public DateTime? JoinedAt { get; init; }
 	
-	public string? Role { get; init; }
+	public ClanRole Role { get; init; }
 
 	public uint? ClanId { get; set; }
 }
