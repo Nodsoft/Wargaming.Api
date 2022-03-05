@@ -16,6 +16,7 @@ namespace Nodsoft.Wargaming.Api.Tests;
 public class WowsVortexApiClientTests
 {
 	private IServiceProvider _services = null!;
+	private WowsVortexApiClient _client = null!;
 	
 	[SetUp]
 	public void Setup()
@@ -26,15 +27,14 @@ public class WowsVortexApiClientTests
 		services.AddApiClient<WowsVortexApiClient>((_, client) => client.BaseAddress = new(WowsVortexApiClient.GetApiHost(Region.EU)));
 
 		_services = services.BuildServiceProvider();
+		_client = _services.GetRequiredService<WowsVortexApiClient>();
 	}
 
 	[Test]
 	public async Task FetchAccountAsync_Nominal()
 	{
-		WowsVortexApiClient client = _services.GetRequiredService<WowsVortexApiClient>();
-
 		const int accountId = 503379282;
-		VortexAccountInfo? results = await client.FetchAccountAsync(accountId);
+		VortexAccountInfo? results = await _client.FetchAccountAsync(accountId);
 
 		Assert.IsNotNull(results);
 		Assert.IsTrue(results!.AccountId == accountId);
@@ -43,13 +43,32 @@ public class WowsVortexApiClientTests
 	[Test]
 	public async Task FetchAccountsAsync_Nominal()
 	{
-		WowsVortexApiClient client = _services.GetRequiredService<WowsVortexApiClient>();
-
 		uint[] ids = { 503379282, 534767817 };
+		Dictionary<uint, VortexAccountInfo?> results = await _client.FetchAccountsAsync(ids);
 		
-		Dictionary<uint, VortexAccountInfo?> results = await client.FetchAccountsAsync(ids);
-
 		Assert.IsNotEmpty(results);
-		Assert.IsTrue(results.All(x => ids.Contains(x.Value?.AccountId ?? 0)));
+		Assert.IsTrue(results.All(x 
+			=> ids.Contains(x.Value?.AccountId ?? 0)
+			&& x.Key == x.Value?.AccountId));
+	}
+	
+	[Test]
+	public async Task FetchAccountClanAsync_Nominal()
+	{
+		const int accountId = 503379282;
+		VortexAccountClanInfo? results = await _client.FetchAccountClanAsync(accountId);
+
+		Assert.IsNotNull(results);
+		Assert.IsNotNull(results!.Clan);
+	}
+	
+	[Test]
+	public async Task FetchAccountsClansAsync_Nominal()
+	{
+		uint[] ids = { 503379282, 534767817 };
+		Dictionary<uint, VortexAccountClanInfo?> results = await _client.FetchAccountsClansAsync(ids);
+		
+		Assert.IsNotEmpty(results);
+		Assert.IsTrue(results.All(x => ids.Contains(x.Key)));
 	}
 }

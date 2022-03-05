@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ namespace Nodsoft.Wargaming.Api.Tests;
 public class WowsPublicApiClientTests
 {
 	private IServiceProvider _services = null!;
+	private WowsPublicApiClient _client = null!;
 	
 	[SetUp]
 	public void Setup()
@@ -28,15 +30,15 @@ public class WowsPublicApiClientTests
 		}, 10);
 
 		_services = services.BuildServiceProvider();
+		_client = _services.GetRequiredService<WowsPublicApiClient>();
 	}
 
 	[Test]
 	public async Task ListPlayersAsync_Nominal()
 	{
-		WowsPublicApiClient client = _services.GetRequiredService<WowsPublicApiClient>();
+		AccountListing[]? results = (await _client.ListPlayersAsync("Sakura_Isayeki"))?.Data?.ToArray();
 
-		IEnumerable<AccountListing>? results = (await client.ListPlayersAsync("Sakura_Isayeki"))?.Data;
-
+		Assert.IsNotNull(results);
 		Assert.IsNotEmpty(results);
 		Assert.IsTrue(results.Any(x => x.AccountId == 503379282));
 	}
@@ -44,11 +46,10 @@ public class WowsPublicApiClientTests
 	[Test]
 	public async Task FetchPlayersAsync_Nominal()
 	{
-		WowsPublicApiClient client = _services.GetRequiredService<WowsPublicApiClient>();
-
 		const int accountId = 503379282;
-		Dictionary<uint, AccountInfo>? results = (await client.FetchPlayersAsync(new uint[] { accountId }))?.Data;
+		Dictionary<uint, AccountInfo>? results = (await _client.FetchPlayersAsync(new uint[] { accountId }))?.Data;
 
+		Assert.IsNotNull(results);
 		Assert.IsNotEmpty(results);
 		Assert.IsTrue(results.ContainsKey(accountId));
 	}
