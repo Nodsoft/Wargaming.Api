@@ -8,13 +8,13 @@ public record ClanInfo : ClanListing
 	public uint LeaderId { get; init; }
 	public string LeaderName { get; init; } = string.Empty;
 	
-	public float CreatedAt { get; init; }
+	public ulong CreatedAt { get; init; }
 	public DateTime CreatedAtTime => DateTime.UnixEpoch.AddSeconds(CreatedAt);
 	
-	public float UpdatedAt { get; init; }
+	public ulong UpdatedAt { get; init; }
 	public DateTime UpdatedAtTime => DateTime.UnixEpoch.AddSeconds(UpdatedAt);
 	
-	public float? RenamedAt { get; init; }
+	public ulong? RenamedAt { get; init; }
 	public DateTime? RenamedAtTime => RenamedAt is null ? null : DateTime.UnixEpoch.AddSeconds(RenamedAt ?? 0);
 	
 	public string? OldTag { get; init; }

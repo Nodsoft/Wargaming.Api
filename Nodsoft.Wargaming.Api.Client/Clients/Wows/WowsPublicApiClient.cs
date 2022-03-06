@@ -57,4 +57,16 @@ public class WowsPublicApiClient : PublicApiClientBase
 
 		return await response.Content.ReadFromJsonAsync<ApiResponse<Dictionary<uint, ClanInfo>>>(SerializerOptions, ct);
 	}
+	
+	// Api : account/info/
+	public async Task<ApiResponse<Dictionary<uint, AccountClanInfo>>?> FetchAccountsClanInfoAsync(IEnumerable<uint> accountIds, CancellationToken ct = default)
+	{
+		Dictionary<string, string> query = GetDefaultQueryParameters();
+		query.Add("account_id", string.Join(',', accountIds));
+		
+		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("clans/accountinfo/", query));
+		using HttpResponseMessage response = await Client.SendAsync(request, ct);
+
+		return await response.Content.ReadFromJsonAsync<ApiResponse<Dictionary<uint, AccountClanInfo>>>(SerializerOptions, ct);
+	}
 }

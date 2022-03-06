@@ -8,7 +8,7 @@ public record AccountInfo
 	
 	public string Name { get => Nickname; init => Nickname = value; }
 
-	public float CreatedAt { get; init; }
+	public ulong CreatedAt { get; init; }
 	public DateTime CreatedAtTime => DateTime.UnixEpoch.AddSeconds(CreatedAt);
 
 	public bool HiddenProfile { get; init; }

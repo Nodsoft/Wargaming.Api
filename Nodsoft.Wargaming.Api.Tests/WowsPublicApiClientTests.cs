@@ -74,4 +74,15 @@ public class WowsPublicApiClientTests
 		Assert.IsNotEmpty(results!);
 		Assert.IsTrue(results!.ContainsKey(clanId));
 	}
+	
+	[Test]
+	public async Task FetchAccountsClanInfoAsync_Nominal()
+	{
+		const int accountId = 503379282;
+		Dictionary<uint, AccountClanInfo>? results = (await _client.FetchAccountsClanInfoAsync(new uint[] { accountId }))?.Data;
+
+		Assert.IsNotNull(results);
+		Assert.IsNotEmpty(results!);
+		Assert.IsTrue(results!.Any(x => x.Key == accountId && x.Value.AccountId == accountId));
+	}
 }
