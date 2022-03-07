@@ -15,6 +15,7 @@ namespace Nodsoft.Wargaming.Api.Tests;
 public class WowsPublicApiClientTests
 {
 	private IServiceProvider _services = null!;
+	private WowsPublicApiClient _client = null!;
 	
 	[SetUp]
 	public void Setup()
@@ -28,28 +29,59 @@ public class WowsPublicApiClientTests
 		}, 10);
 
 		_services = services.BuildServiceProvider();
+		_client = _services.GetRequiredService<WowsPublicApiClient>();
 	}
 
 	[Test]
 	public async Task ListPlayersAsync_Nominal()
 	{
-		WowsPublicApiClient client = _services.GetRequiredService<WowsPublicApiClient>();
+		AccountListing[]? results = (await _client.ListPlayersAsync("Sakura_Isayeki"))?.Data?.ToArray();
 
-		IEnumerable<AccountListing>? results = (await client.ListPlayersAsync("Sakura_Isayeki"))?.Data;
-
-		Assert.IsNotEmpty(results);
-		Assert.IsTrue(results.Any(x => x.AccountId == 503379282));
+		Assert.IsNotNull(results);
+		Assert.IsNotEmpty(results!);
+		Assert.IsTrue(results!.Any(x => x.AccountId == 503379282));
 	}
 	
 	[Test]
 	public async Task FetchPlayersAsync_Nominal()
 	{
-		WowsPublicApiClient client = _services.GetRequiredService<WowsPublicApiClient>();
-
 		const int accountId = 503379282;
-		Dictionary<uint, AccountInfo>? results = (await client.FetchPlayersAsync(new uint[] { accountId }))?.Data;
+		Dictionary<uint, AccountInfo>? results = (await _client.FetchPlayersAsync(new uint[] { accountId }))?.Data;
 
-		Assert.IsNotEmpty(results);
-		Assert.IsTrue(results.ContainsKey(accountId));
+		Assert.IsNotNull(results);
+		Assert.IsNotEmpty(results!);
+		Assert.IsTrue(results!.ContainsKey(accountId));
+	}
+	
+	[Test]
+	public async Task ListClansAsync_Nominal()
+	{
+		ClanListing[]? results = (await _client.ListClansAsync("Stormshock"))?.Data?.ToArray();
+
+		Assert.IsNotNull(results);
+		Assert.IsNotEmpty(results!);
+		Assert.IsTrue(results!.Any(x => x.ClanId == 500186529));
+	}
+	
+	[Test]
+	public async Task FetchClansAsync_Nominal()
+	{
+		const int clanId = 500186529;
+		Dictionary<uint, ClanInfo>? results = (await _client.FetchClansAsync(new uint[] { clanId }))?.Data;
+
+		Assert.IsNotNull(results);
+		Assert.IsNotEmpty(results!);
+		Assert.IsTrue(results!.ContainsKey(clanId));
+	}
+	
+	[Test]
+	public async Task FetchAccountsClanInfoAsync_Nominal()
+	{
+		const int accountId = 503379282;
+		Dictionary<uint, AccountClanInfo>? results = (await _client.FetchAccountsClanInfoAsync(new uint[] { accountId }))?.Data;
+
+		Assert.IsNotNull(results);
+		Assert.IsNotEmpty(results!);
+		Assert.IsTrue(results!.Any(x => x.Key == accountId && x.Value.AccountId == accountId));
 	}
 }

@@ -28,8 +28,6 @@ public class WowsVortexApiClient : ApiClientBase
 		using HttpRequestMessage request = new(HttpMethod.Get, $"accounts/{accountId}/");
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 
-		string responseContent = await response.Content.ReadAsStringAsync(ct);
-		
 		if (response.IsSuccessStatusCode)
 		{
 			Dictionary<uint, VortexAccountInfo> parsedRequest = await response.Content.ReadFromJsonAsync<ApiResponse<Dictionary<uint, VortexAccountInfo>>>(SerializerOptions, ct);
@@ -50,6 +48,44 @@ public class WowsVortexApiClient : ApiClientBase
 			try
 			{
 				accountFetches.Add(id, await FetchAccountAsync(id, ct));
+			}
+			catch
+			{
+				// ignored
+			}
+		}
+
+		return accountFetches;
+	}
+	
+	
+	// Api : accounts/{id}/clans
+	public async Task<VortexAccountClanInfo?> FetchAccountClanAsync(uint accountId, CancellationToken ct = default) 
+	{
+		using HttpRequestMessage request = new(HttpMethod.Get, $"accounts/{accountId}/clans");
+		using HttpResponseMessage response = await Client.SendAsync(request, ct);
+
+		string responseContent = await response.Content.ReadAsStringAsync(ct);
+		
+		if (response.IsSuccessStatusCode)
+		{
+			VortexAccountClanInfo value = await response.Content.ReadFromJsonAsync<ApiResponse<VortexAccountClanInfo>>(SerializerOptions, ct);
+
+			return value;
+		}
+
+		return null;
+	}
+	
+	public async Task<Dictionary<uint, VortexAccountClanInfo?>> FetchAccountsClansAsync(IEnumerable<uint> accountIds, CancellationToken ct = default)
+	{
+		Dictionary<uint, VortexAccountClanInfo?> accountFetches = new();
+
+		foreach (uint id in accountIds.AsParallel().WithCancellation(ct).WithMergeOptions(ParallelMergeOptions.NotBuffered))
+		{
+			try
+			{
+				accountFetches.Add(id, await FetchAccountClanAsync(id, ct));
 			}
 			catch
 			{
