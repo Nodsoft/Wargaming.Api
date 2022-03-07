@@ -9,37 +9,25 @@ public record ClanMembersView
 	public DateTimeOffset LastUpdatedAt { get; init; }
 }
 
-public class ClanStatistics
-{
-	public double BattlesCount { get; set; }
-	public double WinsPercentage { get; set; }
-	public double ExpPerBattle { get; set; }
-	public double DamagePerBattle { get; set; }
-}
-
-public record ClanMember
+public record ClanMember : ClanStatistics
 {
 	public ClanMemberRole Role { get; init; } = null!;
 	public bool IsPress { get; init; }
 	public bool IsHiddenStatistics { get; init; }
-	public long LastBattleTime { get; init; }
-	public double ExpPerBattle { get; init; }
-	public long? AccumulativeClanResource { get; init; }
-	public double DamagePerBattle { get; init; }
+	public ulong LastBattleTime { get; init; }
+	public uint? AccumulativeClanResource { get; init; }
 	public Uri ProfileLink { get; init; } = null!;
 	public bool IsBanned { get; init; }
 	public long SeasonId { get; init; }
 	public bool? IsBonusActivated { get; init; }
 	public long DaysInClan { get; init; }
-	public double FragsPerBattle { get; init; }
+	public float FragsPerBattle { get; init; }
 	public bool AbnormalResults { get; init; }
 	public object? SeasonRank { get; init; }
 	public long? Leveling { get; init; }
 	public bool OnlineStatus { get; init; }
-	public long Id { get; init; }
-	public long BattlesCount { get; init; }
-	public double BattlesPerDay { get; init; }
-	public double WinsPercentage { get; init; }
+	public uint Id { get; init; }
+	public float BattlesPerDay { get; init; }
 	public string Name { get; init; } = string.Empty;
 	public long Rank { get; init; }
 	

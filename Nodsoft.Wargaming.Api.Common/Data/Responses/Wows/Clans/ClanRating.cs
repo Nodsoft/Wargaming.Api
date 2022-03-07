@@ -2,10 +2,10 @@
 
 public record ClanRating
 {
-	public long BattlesCount { get; init; }
+	public uint BattlesCount { get; init; }
 	public DateTimeOffset? LastWinAt { get; init; }
-	public long DivisionRating { get; init; }
-	public long Division { get; init; }
+	public ushort DivisionRating { get; init; }
+	public ushort Division { get; init; }
 	public bool IsQualified { get; init; }
 	public long InitialPublicRating { get; init; }
 	public ClanStatus Status { get; init; }
@@ -14,13 +14,13 @@ public record ClanRating
 	public long CurrentWinningStreak { get; init; }
 	public ClanMaxPosition? MaxPosition { get; init; }
 	public bool IsBestSeasonRating { get; init; }
-	public long League { get; init; }
-	public long DivisionRatingMax { get; init; }
-	public long SeasonNumber { get; init; }
+	public ushort League { get; init; }
+	public ushort DivisionRatingMax { get; init; }
+	public ushort SeasonNumber { get; init; }
 	public ClanStage? Stage { get; init; }
-	public long PublicRating { get; init; }
-	public long WinsCount { get; init; }
+	public ushort PublicRating { get; init; }
+	public uint WinsCount { get; init; }
 	public Region? Realm { get; init; }
-	public long? Id { get; init; }
-	public long TeamNumber { get; init; }
+	public uint Id { get; init; }
+	public byte TeamNumber { get; init; }
 }

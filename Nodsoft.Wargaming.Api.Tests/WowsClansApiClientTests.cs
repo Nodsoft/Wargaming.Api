@@ -52,4 +52,14 @@ public class WowsClansApiClientTests
 		Assert.IsNotNull(result!.Items);
 		Assert.IsNotEmpty(result.Items!);
 	}
+
+	[Test]
+	public async Task SearchClansAsync_Nominal()
+	{
+		const uint clanId = 500186529;
+		ClanSearchResults? result = await _client.SearchClansAsync("SGCX");
+
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result!.Clans.Any(x => x.Id == clanId));
+	}
 }
