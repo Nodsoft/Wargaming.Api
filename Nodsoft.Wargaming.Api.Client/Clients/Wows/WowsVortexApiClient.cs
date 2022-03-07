@@ -28,8 +28,6 @@ public class WowsVortexApiClient : ApiClientBase
 		using HttpRequestMessage request = new(HttpMethod.Get, $"accounts/{accountId}/");
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 
-		string responseContent = await response.Content.ReadAsStringAsync(ct);
-		
 		if (response.IsSuccessStatusCode)
 		{
 			Dictionary<uint, VortexAccountInfo> parsedRequest = await response.Content.ReadFromJsonAsync<ApiResponse<Dictionary<uint, VortexAccountInfo>>>(SerializerOptions, ct);
@@ -61,7 +59,7 @@ public class WowsVortexApiClient : ApiClientBase
 	}
 	
 	
-	// Api : accounts/{id}
+	// Api : accounts/{id}/clans
 	public async Task<VortexAccountClanInfo?> FetchAccountClanAsync(uint accountId, CancellationToken ct = default) 
 	{
 		using HttpRequestMessage request = new(HttpMethod.Get, $"accounts/{accountId}/clans");

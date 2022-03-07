@@ -14,7 +14,12 @@ public abstract class ApiClientBase : IApiClient
 		PropertyNamingPolicy = SnakeCaseNamingPolicy.Instance,
 		PropertyNameCaseInsensitive = true,
 		NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals | JsonNumberHandling.AllowReadingFromString,
-		Converters = { new ClanRolesJsonEnumConverter(), new JsonStringEnumConverter(SnakeCaseNamingPolicy.Instance) }
+		Converters =
+		{
+			new RegionsJsonEnumConverter(),
+			new ClanRolesJsonEnumConverter(), 
+			new JsonStringEnumConverter(SnakeCaseNamingPolicy.Instance)
+		}
 	};
 	
 	public ApiClientBase(HttpClient client)
