@@ -10,5 +10,5 @@ public record ClanListing
 	
 	public ushort MembersCount { get; init; }
 	
-	public uint Color { get; init; }
+	public int Color { get; init; }
 }
