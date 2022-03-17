@@ -19,7 +19,7 @@ public record ClanLadder
 	public long LongestWinningStreak { get; init; }
 	public long CurrentWinningStreak { get; init; }
 	public ClanMaxPosition MaxPosition { get; init; } = new();
-	public long? MembersCount { get; init; }
+	public long MembersCount { get; init; }
 	public bool IsBestSeasonRating { get; init; }
 	public ClanRating[]? Ratings { get; init; }
 	public long League { get; init; }
