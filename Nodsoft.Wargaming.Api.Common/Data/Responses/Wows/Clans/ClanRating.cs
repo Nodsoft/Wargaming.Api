@@ -21,6 +21,6 @@ public record ClanRating
 	public ushort PublicRating { get; init; }
 	public uint WinsCount { get; init; }
 	public Region? Realm { get; init; }
-	public uint Id { get; init; }
+	public uint? Id { get; init; }
 	public byte TeamNumber { get; init; }
 }
