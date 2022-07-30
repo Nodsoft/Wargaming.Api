@@ -2,16 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-
-        <Version>0.2.6</Version>
-        <Authors>Sakura Akeno Isayeki</Authors>
-        <Company>Nodsoft Systems</Company>
+        
         <Description>Common assets for .NET Wargaming API Client library</Description>
-        <RepositoryUrl>https://github.com/Nodsoft/Wargaming.Api</RepositoryUrl>
-        <RepositoryType>Git</RepositoryType>
-        <Copyright>MIT License</Copyright>
 
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>

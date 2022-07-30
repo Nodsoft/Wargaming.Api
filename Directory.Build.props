@@ -1,0 +1,35 @@
+<Project>
+    <PropertyGroup>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Deterministic>true</Deterministic>
+        <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+        <AnalysisLevel>latest</AnalysisLevel>
+
+        <!--    <VersionPrefix>1.0</VersionPrefix>-->
+        <!--    <VersionSuffix>pre1</VersionSuffix>-->
+
+        <Authors>Sakura Akeno Isayeki</Authors>
+        <Company>Nodsoft Systems</Company>
+        <RepositoryUrl>https://github.com/Nodsoft/Wargaming.Api</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <Copyright>MIT License</Copyright>
+
+        <GitVersionBaseDirectory>$(MSBuildThisFileDirectory)</GitVersionBaseDirectory>
+    </PropertyGroup>
+
+    <ItemGroup Condition="exists('LICENSE')">
+        <None Include="LICENSE" Pack="true" PackagePath=""/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Nerdbank.GitVersioning" Condition="!Exists('packages.config')">
+            <PrivateAssets>all</PrivateAssets>
+            <Version>3.5.108</Version>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Nerdbank.GitVersioning" Version="$(NerdbankGitVersioningVersion)" PrivateAssets="all" />
+    </ItemGroup>
+</Project>
