@@ -6,6 +6,9 @@ using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows;
 
 namespace Nodsoft.Wargaming.Api.Client.Infrastructure.Converters;
 
+/// <summary>
+/// Provides serialization and deserialization specifications for the <see cref="Region"/> enum.
+/// </summary>
 public class RegionsJsonEnumConverter : JsonConverter<Region>
 {
 	public override Region Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) => reader.GetString()?.ToLower(CultureInfo.InvariantCulture) switch

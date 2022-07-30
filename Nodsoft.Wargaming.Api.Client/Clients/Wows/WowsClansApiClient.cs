@@ -9,7 +9,7 @@ using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Vortex;
 
 namespace Nodsoft.Wargaming.Api.Client.Clients.Wows;
 
-public class WowsClansApiClient : ApiClientBase
+public class WowsClansApiClient : ApiClientBase, IWowsClansApiClient
 {
 	public WowsClansApiClient(HttpClient client) : base(client) { }
 	

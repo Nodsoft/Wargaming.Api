@@ -7,7 +7,7 @@ using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Vortex;
 
 namespace Nodsoft.Wargaming.Api.Client.Clients.Wows;
 
-public class WowsVortexApiClient : ApiClientBase
+public class WowsVortexApiClient : ApiClientBase, IWowsVortexApiClient
 {
 	public WowsVortexApiClient(HttpClient client) : base(client) { }
 	
@@ -65,8 +65,6 @@ public class WowsVortexApiClient : ApiClientBase
 		using HttpRequestMessage request = new(HttpMethod.Get, $"accounts/{accountId}/clans");
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 
-		string responseContent = await response.Content.ReadAsStringAsync(ct);
-		
 		if (response.IsSuccessStatusCode)
 		{
 			VortexAccountClanInfo value = await response.Content.ReadFromJsonAsync<ApiResponse<VortexAccountClanInfo>>(SerializerOptions, ct);

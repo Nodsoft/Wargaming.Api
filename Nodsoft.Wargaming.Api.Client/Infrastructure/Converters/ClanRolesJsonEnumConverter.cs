@@ -4,6 +4,9 @@ using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows;
 
 namespace Nodsoft.Wargaming.Api.Client.Infrastructure.Converters;
 
+/// <summary>
+/// Provides serialization and deserialization for the <see cref="ClanRole"/> enum.
+/// </summary>
 public class ClanRolesJsonEnumConverter : JsonConverter<ClanRole>
 {
 	public override ClanRole Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) => reader.GetString().ParseClanRole();
