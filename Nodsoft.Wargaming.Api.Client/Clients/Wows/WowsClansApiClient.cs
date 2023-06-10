@@ -2,10 +2,8 @@
 using Microsoft.AspNetCore.WebUtilities;
 using Nodsoft.Wargaming.Api.Client.Infrastructure;
 using Nodsoft.Wargaming.Api.Common;
-using Nodsoft.Wargaming.Api.Common.Data.Responses;
 using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows;
 using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Clans;
-using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Vortex;
 
 namespace Nodsoft.Wargaming.Api.Client.Clients.Wows;
 

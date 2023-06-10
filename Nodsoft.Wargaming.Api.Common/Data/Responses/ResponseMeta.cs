@@ -1,6 +1,9 @@
-﻿namespace Nodsoft.Wargaming.Api.Common.Data.Responses;
+﻿using JetBrains.Annotations;
 
-public record ResponseMeta
+namespace Nodsoft.Wargaming.Api.Common.Data.Responses;
+
+[PublicAPI]
+public sealed record ResponseMeta
 {
 	public int? Count { get; init; }
 }
