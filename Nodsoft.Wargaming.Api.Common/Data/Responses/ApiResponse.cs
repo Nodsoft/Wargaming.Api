@@ -1,4 +1,6 @@
-﻿namespace Nodsoft.Wargaming.Api.Common.Data.Responses;
+﻿using JetBrains.Annotations;
+
+namespace Nodsoft.Wargaming.Api.Common.Data.Responses;
 
 /// <summary>
 /// Loosely-typed / Generic API Response template.
@@ -8,6 +10,7 @@
 /// </remarks>
 public record ApiResponse : ApiResponse<object>;
 
+
 /// <summary>
 /// Strongly-typed / Defined API Response template.
 /// </summary>
@@ -15,6 +18,7 @@ public record ApiResponse : ApiResponse<object>;
 /// Use <see cref="ApiResponse"/> for generic-typing.
 /// </remarks>
 /// <typeparam name="TData">Model type of the Response's Data</typeparam>
+[PublicAPI]
 public record ApiResponse<TData>
 {
 	public string Status { get; init; } = string.Empty;

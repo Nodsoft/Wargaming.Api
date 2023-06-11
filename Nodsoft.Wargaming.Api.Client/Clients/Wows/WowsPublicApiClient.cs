@@ -5,7 +5,7 @@ using Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Public;
 
 namespace Nodsoft.Wargaming.Api.Client.Clients.Wows;
 
-public class WowsPublicApiClient : PublicApiClientBase
+public class WowsPublicApiClient : PublicApiClientBase, IWowsPublicApiClient
 {
 	public WowsPublicApiClient(HttpClient client, PublicApiOptions options) : base(client, options) { }
 	

@@ -1,6 +1,9 @@
-﻿namespace Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Clans;
+﻿using JetBrains.Annotations;
 
-public record ClanMembersView
+namespace Nodsoft.Wargaming.Api.Common.Data.Responses.Wows.Clans;
+
+[PublicAPI]
+public sealed record ClanMembersView
 {
 	public ClanStatistics ClanStatistics { get; init; } = null!;
 	public ClanMember[]? Items { get; init; }

@@ -21,8 +21,8 @@ public abstract class ApiClientBase : IApiClient
 			new JsonStringEnumConverter(SnakeCaseNamingPolicy.Instance)
 		}
 	};
-	
-	public ApiClientBase(HttpClient client)
+
+	protected ApiClientBase(HttpClient client)
 	{
 		Client = client;
 	}

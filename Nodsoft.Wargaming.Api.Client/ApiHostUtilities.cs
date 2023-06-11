@@ -2,8 +2,17 @@
 
 namespace Nodsoft.Wargaming.Api.Client;
 
-public class ApiHostUtilities
+/// <summary>
+/// Various utilities for resolving Wargaming API endpoints.
+/// </summary>
+public static class ApiHostUtilities
 {
+	/// <summary>
+	/// Resolves the API host for the given game and region.
+	/// </summary>
+	/// <param name="game">The Wargaming game to resolve the API host for.</param>
+	/// <param name="region">The Wargaming region to resolve the API host for.</param>
+	/// <returns></returns>
 	public static string GetApiHost(Game game, Region region) => ApiHosts[(int)game][(int)region];
 
 	private static readonly string[][] ApiHosts = {
