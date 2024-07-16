@@ -52,7 +52,10 @@ jobs:
         run: dotnet restore --locked-mode
 
       - name: Build
-        run: dotnet build
+        run: dotnet build -c Release --no-restore
+
+      - name: Package
+        run: dotnet pack -c Release --no-build --include-symbols
 
       - id: is-public-release
         uses: ASzc/change-string-case-action@v6
