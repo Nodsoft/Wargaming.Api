@@ -49,7 +49,7 @@ jobs:
         id: nbgv
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore --locked-mode
 
       - name: Build
         run: dotnet build

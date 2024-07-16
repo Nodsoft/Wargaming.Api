@@ -10,7 +10,8 @@
         <AnalysisLevel>latest</AnalysisLevel>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        
         <!--    <VersionPrefix>1.0</VersionPrefix>-->
         <!--    <VersionSuffix>pre1</VersionSuffix>-->
 
