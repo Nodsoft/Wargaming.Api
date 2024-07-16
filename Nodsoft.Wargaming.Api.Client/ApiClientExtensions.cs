@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Nodsoft.Wargaming.Api.Client.Clients;
 using Nodsoft.Wargaming.Api.Client.Infrastructure;

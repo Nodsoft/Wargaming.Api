@@ -16,7 +16,7 @@ public class WowsPublicApiClient : PublicApiClientBase, IWowsPublicApiClient
 		Dictionary<string, string> query = GetDefaultQueryParameters();
 		query.Add("search", search);
 
-		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("account/list/", query));
+		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("account/list/", query!));
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 
 		return await response.Content.ReadFromJsonAsync<ApiResponse<IEnumerable<AccountListing>>>(SerializerOptions, ct);
@@ -28,7 +28,7 @@ public class WowsPublicApiClient : PublicApiClientBase, IWowsPublicApiClient
 		Dictionary<string, string> query = GetDefaultQueryParameters();
 		query.Add("account_id", string.Join(',', accountIds));
 		
-		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("account/info/", query));
+		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("account/info/", query!));
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 
 		return await response.Content.ReadFromJsonAsync<ApiResponse<Dictionary<uint, AccountInfo>>>(SerializerOptions, ct);
@@ -40,7 +40,7 @@ public class WowsPublicApiClient : PublicApiClientBase, IWowsPublicApiClient
 		Dictionary<string, string> query = GetDefaultQueryParameters();
 		query.Add("search", search);
 
-		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("clans/list/", query));
+		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("clans/list/", query!));
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 
 		return await response.Content.ReadFromJsonAsync<ApiResponse<IEnumerable<ClanListing>>>(SerializerOptions, ct);
@@ -52,7 +52,7 @@ public class WowsPublicApiClient : PublicApiClientBase, IWowsPublicApiClient
 		Dictionary<string, string> query = GetDefaultQueryParameters();
 		query.Add("clan_id", string.Join(',', clanIds));
 		
-		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("clans/info/", query));
+		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("clans/info/", query!));
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 
 		return await response.Content.ReadFromJsonAsync<ApiResponse<Dictionary<uint, ClanInfo>>>(SerializerOptions, ct);
@@ -64,7 +64,7 @@ public class WowsPublicApiClient : PublicApiClientBase, IWowsPublicApiClient
 		Dictionary<string, string> query = GetDefaultQueryParameters();
 		query.Add("account_id", string.Join(',', accountIds));
 		
-		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("clans/accountinfo/", query));
+		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("clans/accountinfo/", query!));
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 
 		return await response.Content.ReadFromJsonAsync<ApiResponse<Dictionary<uint, AccountClanInfo>>>(SerializerOptions, ct);

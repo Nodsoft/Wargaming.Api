@@ -53,7 +53,7 @@ public class WowsClansApiClient : ApiClientBase, IWowsClansApiClient
 			{ "offset", offset.ToString() }
 		};
 
-		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("search/clans/", query));
+		using HttpRequestMessage request = new(HttpMethod.Get, QueryHelpers.AddQueryString("search/clans/", query!));
 		
 		using HttpResponseMessage response = await Client.SendAsync(request, ct);
 

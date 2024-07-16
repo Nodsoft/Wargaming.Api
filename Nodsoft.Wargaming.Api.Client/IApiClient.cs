@@ -1,4 +1,4 @@
-﻿namespace Nodsoft.Wargaming.Api.Client.Clients;
+﻿namespace Nodsoft.Wargaming.Api.Client;
 
 
 /// <summary>

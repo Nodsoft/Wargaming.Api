@@ -67,7 +67,7 @@ public class WowsVortexApiClient : ApiClientBase, IWowsVortexApiClient
 
 		if (response.IsSuccessStatusCode)
 		{
-			VortexAccountClanInfo value = await response.Content.ReadFromJsonAsync<ApiResponse<VortexAccountClanInfo>>(SerializerOptions, ct);
+			VortexAccountClanInfo? value = await response.Content.ReadFromJsonAsync<ApiResponse<VortexAccountClanInfo>>(SerializerOptions, ct);
 
 			return value;
 		}
