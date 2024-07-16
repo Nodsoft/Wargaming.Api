@@ -11,16 +11,22 @@ public static class Program
 	{
 		IHost host = CreateHostBuilder(args).Build();
 
-		WowsPublicApiClient client = host.Services.GetRequiredService<WowsPublicApiClient>();
+		var client = host.Services.GetRequiredService<WowsClansApiClient>();
 
-		var result = await client.ListPlayersAsync("Sakura");
+		// var result = await client.ListPlayersAsync("Sakura");
 
+		var result = await client.FetchClanViewAsync(571529163);
 
 		await host.RunAsync();
 	}
 
 	public static IServiceCollection ConfigureServices(IServiceCollection services)
 	{
+		services.AddApiClient<WowsClansApiClient>((_, client) =>
+		{
+			client.BaseAddress = new(WowsClansApiClient.GetApiHost(Region.EU));
+		});
+		
 		services.AddThrottledApiClient<WowsPublicApiClient>((_, client) =>
 		{
 			client.BaseAddress = new(ApiHostUtilities.GetApiHost(Game.WOWS, Region.EU));

@@ -1,8 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        
         <Description>Common assets for .NET Wargaming API Client library</Description>
 
         <IncludeSymbols>true</IncludeSymbols>
@@ -13,7 +11,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
+      <PackageReference Include="JetBrains.Annotations" Version="2024.2.0" />
     </ItemGroup>
 
 </Project>
